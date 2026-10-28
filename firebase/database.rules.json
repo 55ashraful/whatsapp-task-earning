@@ -1,0 +1,264 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "users": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['uid','displayName','email','role','status','referralCode'])",
+        "uid":       { ".validate": "newData.val() === $uid" },
+        "displayName": { ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 40" },
+        "email":     { ".validate": "newData.isString() && newData.val().length <= 120" },
+        "photoURL":  { ".validate": "newData.isString() && (newData.val() === '' || (newData.val().matches(/^https?:\\/\\/.+/) && newData.val().length <= 500))" },
+        "role":      { ".validate": "(data.exists() && newData.val() === data.val()) || (!data.exists() && (newData.val() === 'buyer' || newData.val() === 'worker' || newData.val() === 'pending'))" },
+        "status":    { ".validate": "(data.exists() && newData.val() === data.val()) || (!data.exists() && newData.val() === 'active')" },
+        "createdAt": { ".validate": "newData.isNumber() || newData.val() === null" },
+        "referralCode": { ".validate": "newData.isString() && newData.val().matches(/^[A-Z0-9]{4,10}$/)" },
+        "referredBy": { ".validate": "newData.isString() && (newData.val() === '' || newData.val().matches(/^[A-Za-z0-9_-]{6,64}$/))" },
+        "whatsapp": {
+          "number":   { ".validate": "newData.isString() && (newData.val() === '' || newData.val().matches(/^01[3-9][0-9]{8}$/))" },
+          "linkedAt": { ".validate": "newData.isNumber() || newData.val() === null" },
+          "$other":   { ".validate": false }
+        },
+        "language":  { ".validate": "newData.isString() && newData.val().length <= 8" },
+        "$other":    { ".validate": false }
+      }
+    },
+
+    "referralCodes": {
+      ".read": "auth != null",
+      "$code": {
+        ".write": "auth != null && !data.exists() && newData.val() === auth.uid",
+        ".validate": "newData.isString() && newData.val().length > 0"
+      }
+    },
+
+    "referrals": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": "auth != null && auth.uid === $uid",
+        "$newUid": {
+          ".validate": "newData.hasChildren(['uid','displayName','joinedAt']) && newData.child('uid').val() === $newUid && $newUid !== $uid && $newUid !== auth.uid"
+        }
+      },
+      ".indexOn": ["joinedAt"]
+    },
+
+    "referralRewards": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": false
+      }
+    },
+
+    "referralRewardBalance": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": false
+      }
+    },
+
+    "wallets": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": false
+      }
+    },
+
+    "transactions": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": false,
+        ".indexOn": ["timestamp"]
+      }
+    },
+
+    "depositRequests": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        "$reqId": {
+          ".write": "auth != null && auth.uid === $uid && !data.exists()",
+          ".validate": "newData.hasChildren(['userId','method','senderNumber','trxId','amount','status','createdAt'])",
+          "userId":       { ".validate": "newData.val() === $uid" },
+          "userEmail":    { ".validate": "newData.isString() && newData.val().length <= 120" },
+          "method":       { ".validate": "newData.val() === 'bkash' || newData.val() === 'nagad' || newData.val() === 'rocket'" },
+          "senderNumber": { ".validate": "newData.isString() && newData.val().replace(/[^0-9]/g, '').matches(/^01[3-9][0-9]{8}$|^8801[3-9][0-9]{8}$/)" },
+          "trxId":        { ".validate": "newData.isString() && newData.val().matches(/^[A-Za-z0-9]{6,20}$/)" },
+          "amount":       { ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= 100000 && newData.val() >= (root.child('settings').child('minDeposit').val() || 100)" },
+          "currency":     { ".validate": "newData.val() === 'BDT'" },
+          "status":       { ".validate": "newData.val() === 'pending'" },
+          "createdAt":    { ".validate": "newData.isNumber()" },
+          "reviewedAt":   { ".validate": "newData.val() === 0 || newData.val() === null" },
+          "adminNote":    { ".validate": "newData.val() === '' || newData.val() === null" },
+          "$other":       { ".validate": false }
+        },
+        ".indexOn": ["createdAt"]
+      }
+    },
+
+    "withdrawalRequests": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        "$reqId": {
+          ".write": "auth != null && auth.uid === $uid && !data.exists()",
+          ".validate": "newData.hasChildren(['userId','method','accountNumber','amount','status','createdAt'])",
+          "userId":        { ".validate": "newData.val() === $uid" },
+          "userEmail":     { ".validate": "newData.isString() && newData.val().length <= 120" },
+          "method":        { ".validate": "newData.val() === 'bkash' || newData.val() === 'nagad' || newData.val() === 'rocket'" },
+          "accountNumber": { ".validate": "newData.isString() && newData.val().replace(/[^0-9]/g, '').matches(/^01[3-9][0-9]{8}$|^8801[3-9][0-9]{8}$/)" },
+          "amount":        { ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= 100000 && newData.val() >= (root.child('settings').child('minWithdraw').val() || 200)" },
+          "currency":      { ".validate": "newData.val() === 'BDT'" },
+          "status":        { ".validate": "newData.val() === 'pending'" },
+          "createdAt":     { ".validate": "newData.isNumber()" },
+          "reviewedAt":    { ".validate": "newData.val() === 0 || newData.val() === null" },
+          "adminNote":     { ".validate": "newData.val() === '' || newData.val() === null" },
+          "$other":        { ".validate": false }
+        },
+        ".indexOn": ["createdAt"]
+      }
+    },
+
+    "tasks": {
+      ".read": "auth != null",
+      ".write": false,
+      ".indexOn": ["status", "buyerId", "createdAt"]
+    },
+
+    "taskAssignments": {
+      ".read": "auth != null",
+      "$taskId": {
+        "$workerId": {
+          ".write": "auth != null && auth.uid === $workerId && !data.exists() && root.child('users').child(auth.uid).child('status').val() === 'active' && root.child('users').child(auth.uid).child('role').val() === 'worker' && root.child('tasks').child($taskId).child('status').val() === 'active'",
+          ".validate": "newData.hasChildren(['taskId','workerId','status','assignedAt'])",
+          "taskId":    { ".validate": "newData.val() === $taskId" },
+          "workerId":  { ".validate": "newData.val() === $workerId" },
+          "status":    { ".validate": "newData.val() === 'in_progress'" },
+          "assignedAt": { ".validate": "newData.isNumber()" },
+          "$other":    { ".validate": false }
+        }
+      }
+    },
+
+    "submissions": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$taskId": {
+        ".read": "auth != null && root.child('tasks').child($taskId).child('buyerId').val() === auth.uid",
+        "$subId": {
+          ".write": "auth != null && !data.exists() && root.child('users').child(auth.uid).child('status').val() === 'active'",
+          ".validate": "newData.hasChildren(['taskId','workerId','buyerId','status','createdAt','taskId_workerId'])",
+          "taskId":   { ".validate": "newData.val() === $taskId && root.child('tasks').child($taskId).child('status').val() === 'active'" },
+          "taskTitle": { ".validate": "newData.isString() && newData.val().length <= 120" },
+          "workerId": { ".validate": "newData.val() === auth.uid && root.child('taskAssignments').child($taskId).child(auth.uid).child('status').val() === 'in_progress'" },
+          "workerName": { ".validate": "newData.isString() && newData.val().length <= 40" },
+          "buyerId":  { ".validate": "newData.val() === root.child('tasks').child($taskId).child('buyerId').val()" },
+          "proofUrl": { ".validate": "newData.isString() && (newData.val() === '' || (newData.val().matches(/^https?:\\/\\/.+/) && newData.val().length <= 600))" },
+          "proofText": { ".validate": "newData.isString() && (newData.val() === '' || newData.val().length >= 10) && newData.val().length <= 2000" },
+          "reference": { ".validate": "newData.isString() && newData.val().length <= 600" },
+          "reward":   { ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= 100000" },
+          "currency": { ".validate": "newData.val() === 'BDT'" },
+          "taskId_workerId": { ".validate": "newData.val() === $taskId + '_' + auth.uid" },
+          "status":   { ".validate": "newData.val() === 'pending'" },
+          "createdAt": { ".validate": "newData.isNumber()" },
+          "reviewedAt": { ".validate": "newData.val() === 0 || newData.val() === null" },
+          "rejectReason": { ".validate": "newData.val() === '' || newData.val() === null" },
+          "$other":   { ".validate": false }
+        },
+        ".indexOn": ["taskId_workerId", "createdAt"]
+      }
+    },
+
+    "userSubmissions": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        "$subId": {
+          ".write": "auth != null && auth.uid === $uid && !data.exists()",
+          ".validate": "newData.hasChildren(['taskId','taskId_subId','status','createdAt'])",
+          "taskId":   { ".validate": "newData.isString() && newData.val().length <= 64" },
+          "taskId_subId": { ".validate": "newData.isString() && newData.val().length <= 140" },
+          "taskTitle": { ".validate": "newData.isString() && newData.val().length <= 120" },
+          "proofUrl": { ".validate": "newData.isString() && newData.val().length <= 600" },
+          "proofText": { ".validate": "newData.isString() && newData.val().length <= 2000" },
+          "reward":   { ".validate": "newData.isNumber() && newData.val() > 0" },
+          "status":   { ".validate": "newData.val() === 'pending'" },
+          "createdAt": { ".validate": "newData.isNumber()" },
+          "reviewedAt": { ".validate": "newData.val() === 0 || newData.val() === null" },
+          "rejectReason": { ".validate": "newData.val() === '' || newData.val() === null" },
+          "$other":   { ".validate": false }
+        },
+        ".indexOn": ["createdAt"]
+      }
+    },
+
+    "notifications": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false,
+        "$notifId": {
+          "read": {
+            ".write": "auth != null && auth.uid === $uid && data.parent().exists()",
+            ".validate": "newData.isBoolean() && newData.val() === true"
+          }
+        },
+        ".indexOn": ["createdAt"]
+      }
+    },
+
+    "spinState": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+
+    "spinHistory": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false,
+        ".indexOn": ["at"]
+      }
+    },
+
+    "liveWins": {
+      ".read": "auth != null",
+      ".write": false,
+      ".indexOn": ["at"]
+    },
+
+    "reports": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$repId": {
+        ".write": "auth != null && !data.exists() && root.child('users').child(auth.uid).child('status').val() === 'active'",
+        ".validate": "newData.hasChildren(['reporterId','targetType','targetId','reason','status','createdAt'])",
+        "reporterId":  { ".validate": "newData.val() === auth.uid" },
+        "targetType":  { ".validate": "newData.val() === 'task' || newData.val() === 'user' || newData.val() === 'submission'" },
+        "targetId":    { ".validate": "newData.isString() && newData.val().length <= 64" },
+        "reason":      { ".validate": "newData.isString() && newData.val().length >= 8 && newData.val().length <= 600" },
+        "status":      { ".validate": "newData.val() === 'open'" },
+        "createdAt":   { ".validate": "newData.isNumber()" },
+        "$other":      { ".validate": false }
+      },
+      ".indexOn": ["status", "createdAt"]
+    },
+
+    "settings": {
+      ".read": "auth != null",
+      ".write": false
+    },
+
+    "stats": {
+      ".read": "auth != null",
+      ".write": false
+    },
+
+    "adminAuditLogs": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      ".write": false,
+      ".indexOn": ["at"]
+    }
+  }
+}
