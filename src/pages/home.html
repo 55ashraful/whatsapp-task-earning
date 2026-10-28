@@ -1,0 +1,58 @@
+<!-- home page fragment -->
+<div class="home-page">
+  <div class="payout-card mb-2">
+    <div>
+      <div class="pl"><span class="live-dot"></span> আজকের মোট পেআউট (Today's Payout)</div>
+      <div class="pv" id="global-payout">৳0.00</div>
+      <div class="ps">মোট ব্যবহারকারী: <b id="global-users">0</b> জন</div>
+    </div>
+    <div style="text-align:right">
+      <span class="live-chip"><span class="live-dot"></span>লাইভ আপডেট</span>
+      <div class="mt-2 small" style="opacity:.85">আপনার ব্যালেন্স</div>
+      <div class="pv" id="home-balance" style="font-size:19px">৳0.00</div>
+    </div>
+  </div>
+
+  <div class="marquee mb-2"><div class="marquee-track" id="marquee-track"><span>🎉 সিস্টেম সম্পূর্ণ এনক্রিপ্টেড | আপনার ব্যক্তিগত তথ্য সুরক্ষিত</span></div></div>
+
+  <div class="banner-carousel mb-3">
+    <div class="slides" id="banner-slides"></div>
+    <div class="banner-dots" id="banner-dots"></div>
+  </div>
+
+  <div id="home-role-sections"></div>
+
+  <div class="section-head"><h3>WhatsApp তালিকা</h3></div>
+  <div class="card" id="home-wa-card">
+    <div class="row-between">
+      <div>
+        <div class="bold">যুক্ত WhatsApp নম্বর</div>
+        <div class="muted small" id="home-wa-num">যুক্ত করে প্রচারমূলক টাস্ক পান</div>
+      </div>
+      <a class="btn btn-success btn-sm" href="#/whatsapp-link">এখনই যুক্ত করুন</a>
+    </div>
+  </div>
+
+  <div class="section-head"><h3>সাম্প্রতিক কার্যক্রম</h3><a href="#/notifications" class="small bold">সব দেখুন →</a></div>
+  <div class="card" id="home-activity"></div>
+
+  <div class="section-head"><h3>ব্যবহারের নির্দেশাবলী</h3></div>
+  <div class="guide-grid mb-3">
+    <a class="guide-card" href="#/task-rules">
+      <div class="gc-top" style="background:linear-gradient(135deg,#2563eb,#60a5fa)">🧩</div>
+      <div class="gc-body"><div class="gc-t">টাস্ক কীভাবে করবেন</div><div class="gc-d">স্লট নিন → কাজ করুন → প্রমাণ জমা দিন</div></div>
+    </a>
+    <a class="guide-card" href="#/whatsapp-link">
+      <div class="gc-top" style="background:linear-gradient(135deg,#16a34a,#4ade80)">💬</div>
+      <div class="gc-body"><div class="gc-t">WhatsApp যুক্ত করুন</div><div class="gc-d">নিরাপদ নম্বর বাইন্ডিং — OTP লাগে না</div></div>
+    </a>
+    <a class="guide-card" href="#/wallet">
+      <div class="gc-top" style="background:linear-gradient(135deg,#d97706,#fbbf24)">💳</div>
+      <div class="gc-body"><div class="gc-t">ডিপোজিট ও উত্তোলন</div><div class="gc-d">bKash · Nagad · Rocket ম্যানুয়াল যাচাই</div></div>
+    </a>
+    <a class="guide-card" href="#/referral">
+      <div class="gc-top" style="background:linear-gradient(135deg,#be185d,#f472b6)">👥</div>
+      <div class="gc-body"><div class="gc-t">রেফারেল আয়</div><div class="gc-d">বন্ধুর আয়ের ৫% + মাইলস্টোন বোনাস</div></div>
+    </a>
+  </div>
+</div>

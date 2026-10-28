@@ -1,0 +1,82 @@
+<!-- wallet page fragment -->
+<div class="wallet-page">
+  <div class="wallet-hero mb-3">
+    <div class="wh-l">উত্তোলনযোগ্য ব্যালেন্স (Available)</div>
+    <div class="wh-v" id="wallet-available">৳0.00</div>
+    <div class="wh-btns">
+      <a class="btn btn-dep" href="#wallet-deposit">➕ ডিপোজিট</a>
+      <a class="btn btn-wd" href="#wallet-withdraw">🏧 উত্তোলন</a>
+    </div>
+  </div>
+
+  <div class="grid-3 mb-3">
+    <div class="stat-card gold"><div class="v" id="w-pending">৳0.00</div><div class="l">পেন্ডিং আয়</div></div>
+    <div class="stat-card green"><div class="v" id="w-earned">৳0.00</div><div class="l">মোট আয়</div></div>
+    <div class="stat-card red"><div class="v" id="w-spent">৳0.00</div><div class="l">মোট খরচ</div></div>
+  </div>
+  <div class="grid-2 mb-3">
+    <div class="stat-card"><div class="v" id="w-reserved">৳0.00</div><div class="l">Reserve (টাস্ক বাজেট)</div></div>
+    <div class="stat-card"><div class="v" id="w-withdrawn">৳0.00</div><div class="l">মোট উত্তোলন</div></div>
+  </div>
+
+  <a class="btn btn-ghost btn-sm mb-3" href="#/transaction-history">🧾 সম্পূর্ণ লেনদেন হিস্টোরি দেখুন →</a>
+
+  <!-- Deposit -->
+  <div class="card" id="wallet-deposit">
+    <h3 class="card-title mb-2">ডিপোজিট করুন (ম্যানুয়াল যাচাই)</h3>
+    <div class="alert alert-warn" id="min-deposit-note">সর্বনিম্ন ডিপোজিট ৳100</div>
+    <p class="bold mb-2" style="font-size:13.5px">① প্রথমে নিচের নম্বরে Send Money করুন:</p>
+    <div class="pay-number-box" id="pay-numbers"></div>
+    <form id="form-deposit" novalidate>
+      <p class="bold mb-2" style="font-size:13.5px">② তারপর রিকোয়েস্ট জমা দিন:</p>
+      <div class="pay-methods">
+        <label><input type="radio" name="pay-method" value="bkash"><div class="pay-m pm-bkash">bKash<small>পার্সোনাল</small></div></label>
+        <label><input type="radio" name="pay-method" value="nagad"><div class="pay-m pm-nagad">Nagad<small>পার্সোনাল</small></div></label>
+        <label><input type="radio" name="pay-method" value="rocket"><div class="pay-m pm-rocket">Rocket<small>পার্সোনাল</small></div></label>
+      </div>
+      <div class="form-group">
+        <label>পরিমাণ (৳) *</label>
+        <input type="number" id="dep-amount" class="form-control" min="1" step="1" placeholder="যেমন: 500">
+      </div>
+      <div class="form-group">
+        <label>যে নম্বর থেকে পাঠিয়েছেন *</label>
+        <div class="input-group"><span class="prefix">+88</span><input type="tel" id="dep-sender" class="form-control" placeholder="01XXXXXXXXX"></div>
+      </div>
+      <div class="form-group">
+        <label>ট্রানজেকশন আইডি (TrxID) *</label>
+        <input type="text" id="dep-trx" class="form-control" placeholder="যেমন: 9HK5AT7QLP" style="text-transform:uppercase">
+      </div>
+      <button type="submit" class="btn btn-primary" id="dep-submit">ডিপোজিট রিকোয়েস্ট জমা দিন</button>
+      <p class="hint mt-2">⚠️ একই TrxID দিয়ে একাধিক রিকোয়েস্ট অনুমোদন করা যায় না — Admin যাচাই করে ব্যালেন্স যোগ করবেন। ভুয়া তথ্য দিলে অ্যাকাউন্ট স্থগিত হবে।</p>
+    </form>
+  </div>
+
+  <div class="section-head"><h3>ডিপোজিট হিস্টোরি</h3></div>
+  <div class="card" id="deposit-history"></div>
+
+  <!-- Withdraw -->
+  <div class="card mt-3" id="wallet-withdraw">
+    <h3 class="card-title mb-2">উত্তোলন করুন</h3>
+    <div class="alert alert-warn" id="min-withdraw-note">সর্বনিম্ন উত্তোলন ৳200</div>
+    <form id="form-withdraw" novalidate>
+      <div class="pay-methods">
+        <label><input type="radio" name="wd-method" value="bkash"><div class="pay-m pm-bkash">bKash<small>পার্সোনাল</small></div></label>
+        <label><input type="radio" name="wd-method" value="nagad"><div class="pay-m pm-nagad">Nagad<small>পার্সোনাল</small></div></label>
+        <label><input type="radio" name="wd-method" value="rocket"><div class="pay-m pm-rocket">Rocket<small>পার্সোনাল</small></div></label>
+      </div>
+      <div class="form-group">
+        <label>পরিমাণ (৳) *</label>
+        <input type="number" id="wd-amount" class="form-control" min="1" step="1" placeholder="যেমন: 300">
+      </div>
+      <div class="form-group">
+        <label>যে নম্বরে টাকা পাবেন *</label>
+        <div class="input-group"><span class="prefix">+88</span><input type="tel" id="wd-account" class="form-control" placeholder="01XXXXXXXXX"></div>
+      </div>
+      <button type="submit" class="btn btn-success" id="wd-submit">উত্তোলন রিকোয়েস্ট জমা দিন</button>
+      <p class="hint mt-2">⚠️ অনুমোদনের আগ পর্যন্ত টাকা কাটা হয় না; Admin অনুমোদন করলে ব্যালেন্স থেকে কাটা হবে এবং পেমেন্ট পাঠানো হবে (২৪-৪৮ ঘণ্টা)।</p>
+    </form>
+  </div>
+
+  <div class="section-head"><h3>উত্তোলন হিস্টোরি</h3></div>
+  <div class="card mb-3" id="withdraw-history"></div>
+</div>

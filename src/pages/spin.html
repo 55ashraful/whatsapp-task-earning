@@ -1,0 +1,46 @@
+<!-- spin page fragment -->
+<div class="spin-page">
+  <div class="spin-head">
+    <a class="icon-btn" href="#/home">←</a>
+    <div class="sh-t">ভাগ্যবান ক্যাশ চাকা</div>
+    <a class="icon-btn" href="#/spin-history" id="sp-history-link" style="font-size:20px">📊</a>
+  </div>
+
+  <div class="spin-glass">
+    <div class="spin-stats">
+      <div class="ss cyan"><b id="sp-free-left">0</b><span>ফ্রি স্পিন বাকি</span></div>
+      <div class="ss pink"><b id="sp-invited">0</b><span>আমন্ত্রিত বন্ধু</span></div>
+      <div class="ss gold"><b id="sp-balance">৳0</b><span>আমার ব্যালেন্স</span></div>
+    </div>
+  </div>
+
+  <div class="wheel-wrap">
+    <div class="wheel-lights"></div>
+    <div class="wheel-border"></div>
+    <div class="wheel-pointer"></div>
+    <canvas id="wheelCanvas" width="340" height="340"></canvas>
+    <button class="wheel-btn" id="btn-wheel">SPIN</button>
+  </div>
+
+  <div class="spin-btns mt-3">
+    <button class="btn btn-free" id="btn-free-spin">🎡 ফ্রি স্পিন করুন</button>
+    <button class="btn btn-paid" id="btn-paid-spin">২০৳ ব্যালেন্স দিয়ে স্পিন করুন (Paid Spin)</button>
+    <a class="btn btn-invite" href="#/referral">👥 বন্ধুদের আমন্ত্রণ জানান (+৩ স্পিন / প্রতি বন্ধু)</a>
+    <div class="cooldown-timer" id="sp-cooldown"></div>
+  </div>
+
+  <div class="spin-glass">
+    <h4>● লাইভ উইনার তালিকা</h4>
+    <div id="live-wins"></div>
+  </div>
+
+  <div class="spin-glass">
+    <h4>🎡 আমার স্পিন হিস্টোরি</h4>
+    <div id="my-spins"></div>
+  </div>
+
+  <div class="spin-glass">
+    <h4>📋 ক্যাশফ্লো নির্দেশাবলী</h4>
+    <div class="spin-rules" id="spin-rules"></div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<!-- register page fragment -->
+<div class="auth-wrap">
+  <div class="auth-hero">
+    <div class="auth-brand-row">
+      <a class="brand" href="#/home"><img src="public/assets/logo/logo.svg" alt="logo"><span data-i18n="appName">টাস্ক আর্নিং</span></a>
+      <div class="auth-top-btns"><a href="#/login">লগইন</a></div>
+    </div>
+    <h1>ফ্রি অ্যাকাউন্ট খুলুন</h1>
+    <p>Buyer হিসেবে টাস্ক দিন অথবা Worker হিসেবে কাজ করে আয় করুন।</p>
+  </div>
+  <div class="auth-card">
+    <h2 data-i18n="register">রেজিস্ট্রেশন</h2>
+    <p class="sub">১ মিনিটে অ্যাকাউন্ট তৈরি করুন</p>
+    <form id="form-register" novalidate>
+      <div class="form-group">
+        <label data-i18n="displayName">আপনার নাম</label>
+        <input type="text" id="reg-name" class="form-control" placeholder="যেমন: রহিম উদ্দিন" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label data-i18n="email">ইমেইল</label>
+        <input type="email" id="reg-email" class="form-control" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label data-i18n="password">পাসওয়ার্ড</label>
+        <div class="pw-wrap">
+          <input type="password" id="reg-password" class="form-control" placeholder="কমপক্ষে ৬ অক্ষর" autocomplete="new-password">
+          <button type="button" class="pw-toggle">🐵</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="confirmPassword">পাসওয়ার্ড নিশ্চিত করুন</label>
+        <input type="password" id="reg-password2" class="form-control" placeholder="আবার একই পাসওয়ার্ড" autocomplete="new-password">
+      </div>
+      <div class="form-group">
+        <label data-i18n="chooseRole">আপনার ভূমিকা নির্বাচন করুন</label>
+        <div class="role-pick">
+          <label><input type="radio" name="role" value="buyer" class="hidden"><div class="role-card">
+            <div class="rc-ico">🧑‍💼</div><div class="rc-t">Buyer</div><div class="rc-d">টাস্ক তৈরি করবেন ও Worker-এর কাজ যাচাই করবেন</div>
+          </div></label>
+          <label><input type="radio" name="role" value="worker" class="hidden" checked><div class="role-card">
+            <div class="rc-ico">🛠️</div><div class="rc-t">Worker</div><div class="rc-d">উপলব্ধ টাস্ক সম্পন্ন করে আয় করবেন</div>
+          </div></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="referralCodeOptional">রেফারেল কোড (ঐচ্ছিক)</label>
+        <input type="text" id="reg-refcode" class="form-control" placeholder="যেমন: AB12CD" style="text-transform:uppercase">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" id="register-submit" data-i18n="registerBtn">রেজিস্ট্রেশন করুন</button>
+    </form>
+    <div class="auth-divider">অথবা</div>
+    <button type="button" class="btn btn-google" id="register-google">
+      <img src="public/assets/icons/google.svg" alt="G"> <span data-i18n="googleBtn">Google দিয়ে চালিয়ে যান</span>
+    </button>
+    <div class="auth-switch"><span data-i18n="haveAccount">অ্যাকাউন্ট আছে?</span> <a href="#/login" data-i18n="login">লগইন</a></div>
+    <p class="auth-note">একজন ব্যবহারকারী একাধিক অ্যাকাউন্ট খুলে ভুয়া রেফারেল বোনাস নেওয়ার চেষ্টা করলে সব অ্যাকাউন্ট স্থগিত হবে।</p>
+  </div>
+</div>

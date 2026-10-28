@@ -1,0 +1,45 @@
+<!-- whatsapp link (safe number binding) page fragment -->
+<div class="wa-page">
+  <div class="back-row"><a href="#/home">← হোম</a></div>
+
+  <div class="card mb-3">
+    <div class="row mb-2">
+      <div class="li-ico" style="background:#dcfce7;font-size:22px">💬</div>
+      <div>
+        <div class="bold">WhatsApp নম্বর বাইন্ডিং</div>
+        <div class="muted small">প্রচারমূলক টাস্ক পেতে আপনার নম্বর যুক্ত করুন</div>
+      </div>
+    </div>
+
+    <div id="wa-current" class="hidden">
+      <div class="alert alert-success">✅ যুক্ত নম্বর: <b id="wa-current-num">—</b></div>
+      <button class="btn btn-danger btn-sm" id="wa-unbind">নম্বর সরান</button>
+    </div>
+
+    <form id="form-wa-bind" novalidate>
+      <div class="form-group">
+        <label>WhatsApp নম্বর *</label>
+        <div class="input-group"><span class="prefix">+88</span><input type="tel" id="wa-number" class="form-control" placeholder="01XXXXXXXXX"></div>
+      </div>
+      <div class="form-group">
+        <label style="display:flex;gap:8px;align-items:flex-start;font-weight:600">
+          <input type="checkbox" id="wa-consent" style="margin-top:3px">
+          <span>আমি সম্মত যে Buyer-রা টাস্ক-সংক্রান্ত বৈধ প্রচারমূলক যোগাযোগের জন্য এই নম্বর ব্যবহার করতে পারবেন।</span>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-success" id="wa-submit">💬 নম্বর যুক্ত করুন</button>
+    </form>
+
+    <div class="privacy-box">
+      🔒 <b>নিরাপত্তা প্রতিশ্রুতি:</b> আমরা <b>কখনোই</b> আপনার WhatsApp OTP, ভেরিফিকেশন কোড বা পাসওয়ার্ড চাইব না।
+      এই পেজে শুধু নম্বর সংরক্ষিত হয় — কোনো অ্যাকাউন্ট অ্যাক্সেস দেওয়া হয় না। যে কেউ OTP/কোড চাইলে সেটি প্রতারণা — আমাদের জানান।
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title mb-2">কেন নম্বর যুক্ত করবেন?</h3>
+    <div class="bind-step"><div class="bs-n">১</div><div><div class="bs-t">প্রচারমূলক টাস্ক</div><div class="bs-d">WhatsApp স্ট্যাটাস/চ্যানেল সংক্রান্ত টাস্কে নম্বর প্রয়োজন হয়</div></div></div>
+    <div class="bind-step"><div class="bs-n">২</div><div><div class="bs-t">Buyer যোগাযোগ</div><div class="bs-d">টাস্ক প্রশ্নে বৈধ যোগাযোগের মাধ্যম হিসেবে ব্যবহৃত হয়</div></div></div>
+    <div class="bind-step"><div class="bs-n">৩</div><div><div class="bs-t">নিরাপত্তা যাচাই</div><div class="bs-d">একই ব্যক্তির একাধিক ভুয়া অ্যাকাউন্ট প্রতিরোধে সাহায্য করে</div></div></div>
+  </div>
+</div>

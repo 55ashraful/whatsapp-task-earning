@@ -1,0 +1,47 @@
+<!-- referral page fragment -->
+<div class="refer-page">
+  <div class="back-row"><a href="#/home">← হোম</a></div>
+  <div class="refer-hero mb-3">
+    <div class="rh-title">৫% ইনকাম বোনাস</div>
+    <div class="rh-pct" id="ref-percent">5%</div>
+    <div class="rh-sub">বন্ধুর প্রতিটি অনুমোদিত টাস্ক আয়ের ৫% আজীবন + প্রথম অনুমোদিত টাস্কে <b id="ref-bonus-per-friend">৳20</b> ফ্ল্যাট বোনাস<br>ট্রান্সফার সীমা: <b id="ref-transfer-min">৳50</b> · আনলিমিটেড বন্ধু</div>
+    <div class="refer-stats">
+      <div class="rs"><b id="rs-total">0</b><span>মোট সদস্য</span></div>
+      <div class="rs"><b id="rs-today">0</b><span>আজ জয়েন</span></div>
+      <div class="rs"><b id="ref-balance">৳0.00</b><span>রেফারেল ব্যালেন্স</span></div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h3 class="card-title mb-2">আপনার রেফারেল কোড</h3>
+    <div class="row mb-2">
+      <input class="form-control" id="ref-code" readonly style="font-size:20px;font-weight:800;letter-spacing:3px;text-align:center;color:var(--primary)">
+      <button class="btn btn-primary btn-sm" id="copy-code" style="flex-shrink:0">কপি</button>
+    </div>
+    <label class="bold" style="font-size:13px">রেফারেল লিংক</label>
+    <div class="copy-row mt-1">
+      <input class="form-control" id="ref-link" readonly>
+      <button class="btn btn-ghost btn-sm" id="copy-link" style="flex-shrink:0">কপি</button>
+    </div>
+    <button class="btn btn-success btn-lg mt-3" id="share-link">💬 WhatsApp-এ শেয়ার করুন</button>
+  </div>
+
+  <div class="card mb-3">
+    <h3 class="card-title mb-2">মাইলস্টোন বোনাস</h3>
+    <div id="ref-milestones"></div>
+    <p class="hint mt-2">মাইলস্টোন বোনাস শুধু বৈধ, সক্রিয় বন্ধুদের উপর গণনা হয় — ভুয়া/ডামি অ্যাকাউন্ট বাদ পড়ে।</p>
+  </div>
+
+  <div class="card mb-3">
+    <div class="row-between mb-2">
+      <h3 class="card-title">আমন্ত্রিত বন্ধু</h3>
+      <button class="btn btn-primary btn-sm" id="ref-transfer">💰 মূল ব্যালেন্সে নিন</button>
+    </div>
+    <div id="ref-friends"></div>
+  </div>
+
+  <div class="alert alert-info">
+    <b>কীভাবে কাজ করে?</b><br>
+    ১. লিংক/কোড শেয়ার করুন → ২. বন্ধু রেজিস্টার করে প্রথম টাস্ক অনুমোদিত করলেই আপনি ফ্ল্যাট বোনাস + তার আয়ের ৫% রেফারেল ব্যালেন্সে পাবেন → ৩. সীমা পূর্ণ হলে মূল ব্যালেন্সে ট্রান্সফার করে উত্তোলন করুন। একই ব্যক্তি/ডিভাইস থেকে একাধিক অ্যাকাউন্টে বোনাস দেওয়া হয় না।
+  </div>
+</div>

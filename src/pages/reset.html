@@ -1,0 +1,22 @@
+<!-- reset password page fragment -->
+<div class="auth-wrap">
+  <div class="auth-hero">
+    <div class="auth-brand-row">
+      <a class="brand" href="#/home"><img src="public/assets/logo/logo.svg" alt="logo"><span data-i18n="appName">টাস্ক আর্নিং</span></a>
+    </div>
+    <h1>পাসওয়ার্ড রিসেট</h1>
+    <p>আপনার ইমেইলে রিসেট লিংক পাঠানো হবে।</p>
+  </div>
+  <div class="auth-card">
+    <h2 data-i18n="resetPw">পাসওয়ার্ড রিসেট</h2>
+    <p class="sub">রেজিস্ট্রেশনে ব্যবহৃত ইমেইল দিন</p>
+    <form id="form-reset" novalidate>
+      <div class="form-group">
+        <label data-i18n="email">ইমেইল</label>
+        <input type="email" id="reset-email" class="form-control" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" id="reset-submit">রিসেট লিংক পাঠান</button>
+    </form>
+    <div class="auth-switch"><a href="#/login">← লগইনে ফিরে যান</a></div>
+  </div>
+</div>

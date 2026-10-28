@@ -1,0 +1,64 @@
+<!-- profile page fragment -->
+<div class="profile-page">
+  <div class="profile-hero mb-3">
+    <div class="avatar lg" id="pf-avatar">U</div>
+    <div style="min-width:0">
+      <div class="ph-name" id="pf-name">—</div>
+      <div class="ph-mail" id="pf-email">—</div>
+      <div class="mt-1"><span class="chip" id="pf-status">✅ সক্রিয়</span></div>
+    </div>
+  </div>
+
+  <div class="alert alert-error hidden" id="pf-blocked-note">
+    ⛔ আপনার অ্যাকাউন্ট ব্লক করা হয়েছে। প্রোফাইল সম্পাদনা বা নতুন কার্যক্রম সাময়িকভাবে বন্ধ — আপিল করতে <a href="#/contact">সাপোর্টে</a> যোগাযোগ করুন।
+  </div>
+
+  <div class="card mb-3 hidden" id="pf-role-pick">
+    <h3 class="card-title mb-2">ভূমিকা নির্বাচন করুন</h3>
+    <p class="muted small mb-2">Google দিয়ে প্রথমবার এসেছেন — কীভাবে ব্যবহার করবেন বেছে নিন:</p>
+    <div class="role-pick">
+      <label><input type="radio" name="pf-role" value="buyer" class="hidden"><div class="role-card"><div class="rc-ico">🧑‍💼</div><div class="rc-t">Buyer</div><div class="rc-d">টাস্ক তৈরি করবেন</div></div></label>
+      <label><input type="radio" name="pf-role" value="worker" class="hidden"><div class="role-card"><div class="rc-ico">🛠️</div><div class="rc-t">Worker</div><div class="rc-d">কাজ করে আয় করবেন</div></div></label>
+    </div>
+    <button class="btn btn-primary mt-3" id="pf-role-save">নিশ্চিত করুন</button>
+  </div>
+
+  <div class="card mb-3">
+    <h3 class="card-title mb-2">অ্যাকাউন্ট তথ্য</h3>
+    <div class="kv-list">
+      <div class="kv"><span class="k">ইউজার আইডি</span><span class="v" id="pf-uid" style="font-size:11.5px;word-break:break-all">—</span></div>
+      <div class="kv"><span class="k">ভূমিকা</span><span class="v" id="pf-role">—</span></div>
+      <div class="kv"><span class="k">সদস্য হয়েছেন</span><span class="v" id="pf-since">—</span></div>
+      <div class="kv"><span class="k">রেফারেল কোড</span><span class="v text-primary bold" id="pf-refcode">—</span></div>
+    </div>
+  </div>
+
+  <div class="card" id="pf-form">
+    <h3 class="card-title mb-2">প্রোফাইল এডিট</h3>
+    <form id="form-profile" novalidate>
+      <div class="form-group">
+        <label>নাম</label>
+        <input type="text" id="edit-name" class="form-control" placeholder="আপনার নাম">
+      </div>
+      <div class="form-group">
+        <label>প্রোফাইল ছবির URL</label>
+        <input type="url" id="edit-photo" class="form-control" placeholder="https://...">
+        <div class="row mt-1">
+          <input type="file" id="edit-photo-file" accept="image/jpeg,image/png,image/webp" class="form-control" style="padding:9px">
+          <button type="button" class="btn btn-ghost btn-sm" id="edit-photo-upload" style="flex-shrink:0">আপলোড</button>
+        </div>
+        <div class="hint">ImgBB server-side proxy দিয়ে আপলোড হয় (JPG/PNG/WebP, ≤৮MB)</div>
+      </div>
+      <button type="submit" class="btn btn-primary" id="pf-save">পরিবর্তন সেভ করুন</button>
+    </form>
+  </div>
+
+  <div class="menu-list mt-3">
+    <a class="list-item" href="#/whatsapp-link"><div class="li-ico">💬</div><div class="li-body"><div class="li-title">WhatsApp নম্বর</div></div><span class="chev">›</span></a>
+    <a class="list-item" href="#/notifications"><div class="li-ico">🔔</div><div class="li-body"><div class="li-title">নোটিফিকেশন</div></div><span class="chev">›</span></a>
+    <a class="list-item" href="#/transaction-history"><div class="li-ico">🧾</div><div class="li-body"><div class="li-title">লেনদেন হিস্টোরি</div></div><span class="chev">›</span></a>
+    <a class="list-item" href="#/task-rules"><div class="li-ico">📜</div><div class="li-body"><div class="li-title">টাস্ক নিয়ম</div></div><span class="chev">›</span></a>
+    <a class="list-item" href="#/faq"><div class="li-ico">❓</div><div class="li-body"><div class="li-title">FAQ</div></div><span class="chev">›</span></a>
+    <a class="list-item" href="#/contact"><div class="li-ico">📞</div><div class="li-body"><div class="li-title">যোগাযোগ / সাপোর্ট</div></div><span class="chev">›</span></a>
+  </div>
+</div>
