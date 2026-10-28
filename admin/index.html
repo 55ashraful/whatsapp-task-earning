@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0f172a">
+  <title>Admin Panel — Task Earning</title>
+  <link rel="icon" href="../public/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <!-- Admin প্যানেল — আলাদা entry point। প্রবেশাধিকার নির্ধারণ হয়
+       users/{uid}/role === 'admin' (Realtime DB) দিয়ে, যা শুধু
+       serverless API (ADMIN_EMAILS bootstrap) বা Firebase Console থেকে সেট হয়। -->
+  <div id="admin-root">
+    <div class="a-guard"><span class="a-spinner"></span><span>Admin প্যানেল লোড হচ্ছে...</span></div>
+  </div>
+  <script type="module" src="js/admin-app.js"></script>
+</body>
+</html>
