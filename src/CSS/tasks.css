@@ -1,0 +1,76 @@
+/* ============================================================
+   tasks.css — task lists, cards, details, create form, review
+   ============================================================ */
+.filter-tabs { display: flex; gap: 7px; overflow-x: auto; padding: 2px 0 8px; scrollbar-width: none; }
+.filter-tabs::-webkit-scrollbar { display: none; }
+.filter-tabs .ftab {
+  padding: 7px 14px; border-radius: 18px; font-size: 13px; font-weight: 700;
+  background: var(--surface); color: var(--text-2); border: 1px solid var(--border); white-space: nowrap;
+}
+.filter-tabs .ftab.on { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.task-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px; box-shadow: var(--shadow); margin-bottom: 12px;
+}
+.task-card .tc-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.task-card .tc-title { font-size: 15px; font-weight: 800; line-height: 1.35; }
+.task-card .tc-cat { flex-shrink: 0; }
+.task-card .tc-desc {
+  font-size: 12.5px; color: var(--text-2); margin-top: 5px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.task-card .tc-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12px; color: var(--text-2); }
+.task-card .tc-meta b { color: var(--text); }
+.task-card .tc-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; gap: 10px; }
+.reward-tag {
+  display: inline-flex; align-items: center; gap: 4px; font-weight: 800; font-size: 16px; color: var(--accent-dark);
+}
+.slot-bar { flex: 1; min-width: 90px; }
+.slot-bar .sb-txt { font-size: 11px; color: var(--text-3); margin-bottom: 3px; display: flex; justify-content: space-between; }
+.slot-bar .progress { height: 7px; }
+.slot-bar .progress > span { background: linear-gradient(90deg, var(--accent), #6ee7a8); }
+.slot-bar .progress > span.full { background: linear-gradient(90deg, var(--danger), #f87171); }
+
+.task-details .td-hero { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--surface); border: 1px solid var(--border); }
+.task-details .td-hero img { max-height: 210px; width: 100%; object-fit: cover; }
+.task-details .td-price {
+  display: flex; align-items: center; justify-content: space-between; padding: 14px 16px;
+  background: linear-gradient(90deg, #f0fdf4, #dcfce7);
+}
+.task-details .td-section { margin-top: 12px; }
+.task-details .td-body { font-size: 13.5px; color: var(--text-2); white-space: pre-wrap; word-break: break-word; }
+.kv-list .kv { display: flex; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px dashed var(--border); font-size: 13.5px; }
+.kv-list .kv:last-child { border-bottom: none; }
+.kv-list .kv .k { color: var(--text-2); flex-shrink: 0; }
+.kv-list .kv .v { font-weight: 600; text-align: right; word-break: break-word; }
+
+.create-form .cost-preview {
+  background: var(--primary-light); border: 1px dashed #93b4f8; border-radius: 12px; padding: 13px 15px; margin: 4px 0 16px;
+}
+.create-form .cost-preview .cp-row { display: flex; justify-content: space-between; font-size: 13.5px; padding: 3px 0; }
+.create-form .cost-preview .cp-total { font-weight: 800; font-size: 15px; color: var(--primary); border-top: 1px dashed #93b4f8; margin-top: 6px; padding-top: 8px; }
+
+.review-card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding: 14px; margin-bottom: 12px; }
+.review-card .rc-head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+.review-card .rc-worker { font-weight: 700; font-size: 14px; }
+.review-card .rc-time { font-size: 11.5px; color: var(--text-3); }
+.review-card .proof-img { border-radius: 10px; margin-top: 10px; max-height: 300px; object-fit: contain; width: 100%; background: var(--surface-2); border: 1px solid var(--border); }
+.review-card .proof-text { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 13px; margin-top: 10px; white-space: pre-wrap; word-break: break-word; }
+.review-actions { display: flex; gap: 10px; margin-top: 12px; }
+.review-actions .btn { flex: 1; }
+.status-pill { font-size: 11.5px; font-weight: 800; padding: 4px 11px; border-radius: 16px; display: inline-flex; align-items: center; gap: 5px; }
+.status-pill.pending { background: #fef3c7; color: #92400e; }
+.status-pill.approved { background: #dcfce7; color: #166534; }
+.status-pill.rejected { background: #fee2e2; color: #b91c1c; }
+.status-pill.active { background: #dcfce7; color: #166534; }
+.status-pill.full { background: #ffedd5; color: #9a3412; }
+.status-pill.completed { background: #dbeafe; color: #1e40af; }
+.status-pill.cancelled, .status-pill.blocked { background: #fee2e2; color: #b91c1c; }
+.status-pill.in_progress { background: #e0e7ff; color: #3730a3; }
+.reason-box { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; border-radius: 10px; padding: 10px 12px; font-size: 12.5px; margin-top: 10px; }
+
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+.cat-item { text-align: center; padding: 10px 2px; border-radius: 12px; background: var(--surface); border: 1.5px solid var(--border); font-size: 11.5px; font-weight: 600; color: var(--text-2); }
+.cat-item .ci { font-size: 20px; display: block; margin-bottom: 3px; }
+.cat-item.on { border-color: var(--primary); background: var(--primary-light); color: var(--primary); }

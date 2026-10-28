@@ -1,0 +1,62 @@
+/* ============================================================
+   responsive.css — tablet & desktop enhancements
+   ============================================================ */
+
+/* ≥ 640px: larger phones / small tablets */
+@media (min-width: 640px) {
+  .page { padding: 18px; }
+  .quick-actions { gap: 10px; }
+  .cat-grid { grid-template-columns: repeat(6, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ≥ 900px: tablets — center content, wider grids */
+@media (min-width: 900px) {
+  .page { max-width: 860px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .guide-grid { grid-template-columns: repeat(3, 1fr); }
+  .task-list-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .task-list-cols .task-card { margin-bottom: 0; }
+}
+
+/* ≥ 1100px: desktop — hide bottom nav, show sidebar */
+@media (min-width: 1100px) {
+  :root { --nav-h: 0px; }
+  #app { padding-bottom: 30px; }
+  .bottom-nav { display: none; }
+  .float-spin { bottom: 24px; }
+  .sidebar {
+    display: flex; flex-direction: column; gap: 4px;
+    position: fixed; top: 0; left: 0; bottom: 0; width: 232px; z-index: 80;
+    background: var(--surface); border-right: 1px solid var(--border);
+    padding: 16px 12px; overflow-y: auto;
+  }
+  .sidebar .brand { padding: 4px 8px 16px; font-size: 17px; }
+  .sidebar a {
+    display: flex; align-items: center; gap: 11px; padding: 11px 14px;
+    border-radius: 12px; color: var(--text-2); font-weight: 600; font-size: 14px;
+  }
+  .sidebar a svg { width: 19px; height: 19px; }
+  .sidebar a:hover { background: var(--surface-2); }
+  .sidebar a.active { background: var(--primary-light); color: var(--primary); }
+  .sidebar .sb-sep { height: 1px; background: var(--border); margin: 10px 6px; }
+  .sidebar .sb-label { font-size: 10.5px; font-weight: 800; letter-spacing: 1px; color: var(--text-3); padding: 8px 14px 2px; text-transform: uppercase; }
+  .sidebar + .app-main { margin-left: 232px; }
+  .app-header { padding-left: calc(232px + 14px); }
+  .page { max-width: 1000px; }
+}
+
+/* Desktop-only sidebar hidden on mobile */
+.sidebar { display: none; }
+
+/* Large screens typography */
+@media (min-width: 1100px) {
+  body { font-size: 15.5px; }
+  .payout-card .pv { font-size: 27px; }
+}
+
+/* Print / accessibility helpers */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+}
