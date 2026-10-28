@@ -1,0 +1,23 @@
+{
+  "name": "whatsapp-task-earning-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WhatsApp Task Earning Website - Buyer/Worker task marketplace with Firebase Auth, Realtime Database and secure Vercel serverless API",
+  "type": "commonjs",
+  "scripts": {
+    "start": "serve -l 3000 .",
+    "dev": "serve -l 3000 .",
+    "build": "node scripts/validate.js",
+    "test": "node tests/run-tests.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.7.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
